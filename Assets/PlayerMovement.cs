@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f; // Скорость движения игрока
-    public float jumpForce = 130f; // Сила прыжка
+    public float jumpForce; // Сила прыжка
     private bool isGrounded; // Флаг, указывающий, находится ли игрок на полу
     private Rigidbody2D rb;
 
@@ -53,6 +53,6 @@ public class PlayerMovement : MonoBehaviour
     void Jump()
     {
         // Применяем силу прыжка
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 }

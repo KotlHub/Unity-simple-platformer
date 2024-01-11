@@ -9,8 +9,8 @@ public class EnemyManager : MonoBehaviour
     public int maxEnemies = 4; 
     public float minY = -3f;
     public float maxY = 3f;
-    public float minSpeed = 1f;
-    public float maxSpeed = 3f;
+    public float minSpeed;
+    public float maxSpeed;
 
     private void Start()
     {
