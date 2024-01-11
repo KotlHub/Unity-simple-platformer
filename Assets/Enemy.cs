@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
         // Если враг вышел за левый край экрана, удаляем его и создаем нового справа
         if (transform.position.x < Camera.main.transform.position.x - Camera.main.orthographicSize * 2f)
         {
+            GameState.currentEnemies--;
             Destroy(gameObject);
         }
     }

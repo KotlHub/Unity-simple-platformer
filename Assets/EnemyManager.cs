@@ -1,35 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 // EnemyManager.cs
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
     public GameObject enemyPrefab; 
-    public int maxEnemies = 4; 
+    public int maxEnemies; 
     public float minY = -3f;
     public float maxY = 3f;
     public float minSpeed;
     public float maxSpeed;
-
     private void Start()
     {
-        // «апускаем создание врагов
-        StartCoroutine(SpawnEnemies());
+        GameState.currentEnemies = 0;
     }
 
-    IEnumerator SpawnEnemies()
+    private void Update()
     {
-        while (true)
+        if(GameState.currentEnemies < maxEnemies)
         {
-            // —оздаем случайное количество врагов в заданных пределах
-            int enemiesToSpawn = Random.Range(1, maxEnemies + 1);
-            for (int i = 0; i < enemiesToSpawn; i++)
+            for(int i = GameState.currentEnemies; i < maxEnemies; i++)
             {
+                GameState.currentEnemies++;
                 SpawnEnemy();
-                yield return new WaitForSeconds(Random.Range(0.5f, 1.5f)); 
             }
-            yield return new WaitForSeconds(Random.Range(1f, 3f)); 
         }
     }
 
